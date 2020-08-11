@@ -1,0 +1,3 @@
+[submodule "libs/PlayRho"]
+	path = libs/PlayRho
+	url = https://github.com/ivorne/PlayRho.git
