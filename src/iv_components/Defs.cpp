@@ -8,7 +8,7 @@ namespace Defs
 
 namespace Log
 {
-    const iv::LogId GameState = iv::LogId::create( "GameState" );
+    const iv::LogId Simulation = iv::LogId::create( "Simulation" );
     const iv::LogId Sectors = iv::LogId::create( "Sectors" );
 
 }

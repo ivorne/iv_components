@@ -5,9 +5,9 @@
 #include "iv_components/Ability/Ability_Behavior.hpp"
 #include "iv_components/Ability/ChargeAbility_Behavior.hpp"
 
-#include "iv_components/GameState/GameState.hpp"
-#include "iv_components/GameState/GameState_Behavior.hpp"
-#include "iv_components/GameState/GameState_Button.hpp"
+#include "iv_components/Simulation/SimulationState.hpp"
+#include "iv_components/Simulation/Simulation.hpp"
+#include "iv_components/Simulation/SimulationState_Button.hpp"
 
 #include "iv_components/Entity2D/Entity2D.hpp"
 #include "iv_components/Entity2D/Entity2D_View.hpp"

@@ -9,7 +9,7 @@ namespace Defs
 
 namespace Log
 {
-    extern const iv::LogId GameState;
+    extern const iv::LogId Simulation;
     extern const iv::LogId Sectors;
 }
 

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <PlayRho/PlayRho.hpp>
-#include "../Link.hpp"
 #include "../Entity2D/Entity2D.hpp"
 
 namespace comp
@@ -28,7 +27,7 @@ public:
     //-------------------------------------------
     /**
     */
-    Link< Entity2D >        entity;
+    iv::Link< Entity2D >    entity;
     
     /**
         Instantiated during registration to Physical2D_World, deinstantiated during unregistration from Physical2D_World.
@@ -44,7 +43,7 @@ private:
     \ingroup Physical2D
     Do not forget to call this->comp::Physical2D_Listener::Initialize(), it will suppress warning about missing initialization (but it does nothing else in this case :-) ).
 */
-class Physical2D_Listener : public GenericListener< Physical2D_Listener >
+class Physical2D_Listener : public iv::GenericListener< Physical2D_Listener >
 {
 public:
 iv::ClientMarker cm;
@@ -58,7 +57,7 @@ iv::ClientMarker cm;
 /**
     \ingroup Physical2D
 */
-class Physical2D_World : public World< Physical2D >, public GenericListener_Index< Physical2D_Listener >, protected playrho::d2::ContactListener
+class Physical2D_World : public iv::World< Physical2D >, public iv::GenericListener_Index< Physical2D_Listener >, protected playrho::d2::ContactListener
 {
 public:
 iv::ClientMarker cm;
@@ -74,7 +73,7 @@ iv::ClientMarker cm;
     void                DestroyBody( playrho::d2::Body * );
     
 protected:
-    // core::World< Entity2D >
+    // iv::World< Entity2D >
     virtual void        Component_Registered( Physical2D * component ) override;
     virtual void        Component_Unregistered( Physical2D * component ) override;
     

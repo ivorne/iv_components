@@ -9,7 +9,7 @@ iv::RuntimeIdDictionary Entity2D_TypeId::Dictionary;
 //------------- Entity2D ---------------------------------------------------------
 Entity2D::Entity2D( iv::ClientMarker * cm ) :
     type( Entity2D_TypeId() ),
-    v_entity( VLink() ),
+    v_entity( iv::VLink() ),
     position( cm, iv::float2( 0, 0 ) ),
     cm( cm ),
     _world( nullptr )
@@ -63,20 +63,20 @@ iv::ClientMarker * Entity2D::owner()
 
 //------------- Entity2D_Listener -------------------------------------------------
 Entity2D_Listener::Entity2D_Listener( iv::Instance * inst, Entity2D_World * world ) :
-    GenericListener< Entity2D_Listener >( inst, world ),
+    iv::GenericListener< Entity2D_Listener >( inst, world ),
     cm( inst, this, "Entity2D_Listener" )
 {
-    this->cm.inherits( this->GenericListener< Entity2D_Listener >::cm );
+    this->cm.inherits( this->iv::GenericListener< Entity2D_Listener >::cm );
 }
 
 //------------- Entity2D_World -------------------------------------------------
 Entity2D_World::Entity2D_World( iv::Instance * inst ) :
-    World< Entity2D >( inst ),
-    GenericListener_Index< Entity2D_Listener >( inst ),
-    ComponentAttr_Index< Entity2D >( inst ),
+    iv::World< Entity2D >( inst ),
+    iv::GenericListener_Index< Entity2D_Listener >( inst ),
+    iv::ComponentAttr_Index< Entity2D >( inst ),
     cm( inst, this, "Entity2D_World" )
 {
-    this->cm.inherits( this->GenericListener_Index< Entity2D_Listener >::cm, this->World< Entity2D >::cm, this->ComponentAttr_Index< Entity2D >::cm );
+    this->cm.inherits( this->iv::GenericListener_Index< Entity2D_Listener >::cm, this->iv::World< Entity2D >::cm, this->iv::ComponentAttr_Index< Entity2D >::cm );
 }
 
 void Entity2D_World::Listener_Initialize( Entity2D_Listener * listener )

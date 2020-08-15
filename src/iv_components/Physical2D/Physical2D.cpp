@@ -53,21 +53,21 @@ Physical2D_World * Physical2D::world()
 
 //--------------------- Physical2D_Listener -------------------------------------------------
 Physical2D_Listener::Physical2D_Listener( iv::Instance * inst, Physical2D_World * world ) :
-    GenericListener< Physical2D_Listener >( inst, world ),
+    iv::GenericListener< Physical2D_Listener >( inst, world ),
     cm( inst, this, "Physical2D_Listener" )
 {
-    this->cm.inherits( this->GenericListener< Physical2D_Listener >::cm );
+    this->cm.inherits( this->iv::GenericListener< Physical2D_Listener >::cm );
 }
 
 //--------------------- Physical2D_World -------------------------------------------------
 Physical2D_World::Physical2D_World( iv::Instance * inst ) :
-    World< Physical2D >( inst ),
-    GenericListener_Index< Physical2D_Listener >( inst ),
+    iv::World< Physical2D >( inst ),
+    iv::GenericListener_Index< Physical2D_Listener >( inst ),
     playrho::d2::ContactListener(),
     cm( inst, this, "Physical2D_World" ),
     world()
 {
-    this->cm.inherits( this->World< Physical2D >::cm, this->GenericListener_Index< Physical2D_Listener >::cm );
+    this->cm.inherits( this->iv::World< Physical2D >::cm, this->iv::GenericListener_Index< Physical2D_Listener >::cm );
     this->world.SetContactListener( this );
 }
 

@@ -1,4 +1,11 @@
 /**
 \mainpage Ivorium components
 
+  - \ref Simulation
+  - \ref Sectors
+  - \ref Entity2D
+  - \ref Physical2D
+  - \ref Ability
+  - \ref Misc
+
 */

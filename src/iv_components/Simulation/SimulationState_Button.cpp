@@ -1,4 +1,4 @@
-#include "GameState_Button.hpp"
+#include "SimulationState_Button.hpp"
 #include "../Defs.hpp"
 
 using namespace iv;
@@ -6,34 +6,34 @@ using namespace iv;
 namespace comp
 {
 
-GameState_Button::GameState_Button( iv::Instance * inst, GameState * m_game, LumaStyleId style_id ) :
+SimulationState_Button::SimulationState_Button( iv::Instance * inst, SimulationState * state, LumaStyleId style_id ) :
     LumaButton( inst, style_id ),
-    cm( inst, this, "GameState_Button" ),
-    m_game( m_game ),
+    cm( inst, this, "SimulationState_Button" ),
+    state( state ),
     heap( inst, &this->cm ),
     anim( inst ),
-    previous_state( GameState::State::Empty )
+    previous_state( SimulationState::Empty )
 {
     this->cm.inherits( this->iv::LumaButton::cm );
     this->cm.owns( this->anim.cm );
     
     this->sufraceNeutralColor( float4( 0.384, 0.000, 0.933, 1 ) );
-    this->attr_surface.Set( "/CoreModels/GameState/GameState_Button/surface.png" );
-    this->attr_hot.Set( "/CoreModels/GameState/GameState_Button/hot.png" );
+    this->attr_surface.Set( "/CoreModels/Simulation/SimulationState_Button/surface.png" );
+    this->attr_hot.Set( "/CoreModels/Simulation/SimulationState_Button/hot.png" );
     
     //----------- input ---------------------------------------------------------------
     auto activation =
             this->heap.create< iv::FunctorActivatorAttribute >(
             &this->cm,
-            [ this, m_game ]()
+            [ this, state ]()
             {
-                GameState::State state = m_game->game_state.Get();
-                if( state == GameState::State::Paused )
-                    m_game->pause.Modify( &this->cm, false );
-                else if( state == GameState::State::Running )
-                    m_game->pause.Modify( &this->cm, true );
+                SimulationState::State st = state->game_state.Get();
+                if( st == SimulationState::Paused )
+                    state->pause.Modify( &this->cm, false );
+                else if( st == SimulationState::Running )
+                    state->pause.Modify( &this->cm, true );
                 else
-                    m_game->restart.Modify( &this->cm, m_game->restart.Get().MakeActivated() );
+                    state->restart.Modify( &this->cm, state->restart.Get().MakeActivated() );
             }
         );
     
@@ -47,7 +47,7 @@ GameState_Button::GameState_Button( iv::Instance * inst, GameState * m_game, Lum
     
     //----- visuals -------------------------------------------------------------------
     this->border = this->surface_slot.createChild< iv::Image >()
-        ->filename( "/CoreModels/GameState/GameState_Button/border.png" );
+        ->filename( "/CoreModels/Simulation/SimulationState_Button/border.png" );
     
     this->icon = this->surface_slot.createChild< iv::Border >()
         ->leftRight( 10, 10 )
@@ -59,7 +59,7 @@ GameState_Button::GameState_Button( iv::Instance * inst, GameState * m_game, Lum
     
     //---------------------------- animation -----------------------------------------------
     // in
-    AnimNode< GameState::State > * in_state = this->anim.Attribute_SourceNode( &m_game->game_state, GameState::State::Empty )
+    AnimNode< SimulationState::State > * in_state = this->anim.Attribute_SourceNode( &state->game_state, SimulationState::Empty )
                                                         ->label( "in_game_state" );
     
     // lambda connector
@@ -77,22 +77,22 @@ GameState_Button::GameState_Button( iv::Instance * inst, GameState * m_game, Lum
             
             switch( in_state->Target() )
             {
-                case GameState::State::Empty:
+                case SimulationState::Empty:
                 {
                     this->icon->filename( "/ivorium_UI/icons/play.png" );
                 } break;
                 
-                case GameState::State::Paused:
+                case SimulationState::Paused:
                 {
                     this->icon->filename( "/ivorium_UI/icons/resume.png" );
                 } break;
                 
-                case GameState::State::Running:
+                case SimulationState::Running:
                 {
                     this->icon->filename( "/ivorium_UI/icons/pause.png" );
                 } break;
                 
-                case GameState::State::Ended:
+                case SimulationState::Ended:
                 {
                     this->icon->filename( "/ivorium_UI/icons/restart.png" );
                 } break;
@@ -103,7 +103,7 @@ GameState_Button::GameState_Button( iv::Instance * inst, GameState * m_game, Lum
     this->CallColorsChanged();
 }
 
-void GameState_Button::ColorsChanged( float4 surface, float4 on_surface )
+void SimulationState_Button::ColorsChanged( float4 surface, float4 on_surface )
 {
     this->icon->preblend( surface );
     this->icon->colorTransform( ColorTransform::Change( float4( 0.384, 0.000, 0.933, 1 ), on_surface ) );

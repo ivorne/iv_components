@@ -1,10 +1,6 @@
 #pragma once
 
 #include <ivorium.hpp>
-#include "../Link.hpp"
-#include "../World.hpp"
-#include "../ComponentAttr.hpp"
-#include "../GenericListener.hpp"
 #include <unordered_set>
 
 namespace comp
@@ -43,10 +39,10 @@ public:
     
     // identity - do not change on registered entity
     Entity2D_TypeId                     type;
-    VLink                               v_entity;
+    iv::VLink                           v_entity;
     
     // state
-    comp::ComponentAttr< Entity2D, iv::float2 > position;
+    iv::ComponentAttr< Entity2D, iv::float2 > position;
     
 private:
     iv::ClientMarker * cm;
@@ -58,7 +54,7 @@ private:
     \ingroup Entity2D
     Do not forget to call this->Entity2D_Listener::Initialize(), it will call Entity2D_Registered for all existing entities.
 */
-class Entity2D_Listener : public GenericListener< Entity2D_Listener >
+class Entity2D_Listener : public iv::GenericListener< Entity2D_Listener >
 {
 public:
 iv::ClientMarker cm;
@@ -78,23 +74,23 @@ private:
 /**
     \ingroup Entity2D
 */
-class Entity2D_World : public World< Entity2D >, public GenericListener_Index< Entity2D_Listener >, public ComponentAttr_Index< Entity2D >
+class Entity2D_World : public iv::World< Entity2D >, public iv::GenericListener_Index< Entity2D_Listener >, public iv::ComponentAttr_Index< Entity2D >
 {
 public:
 iv::ClientMarker cm;
-using World< Entity2D >::instance;
+using iv::World< Entity2D >::instance;
     
                             Entity2D_World( iv::Instance * inst );
     
 protected:
-    // core::GenericListener_Index< Entity2D_Listener >
+    // iv::GenericListener_Index< Entity2D_Listener >
     virtual void Listener_Initialize( Entity2D_Listener * ) override;
     
-    // core::World< Entity2D >
+    // iv::World< Entity2D >
     virtual void Component_Registered( Entity2D * entity ) override;
     virtual void Component_Unregistered( Entity2D * entity ) override;
     
-    // core::ComponentAttr_Index< Entity2D >
+    // iv::ComponentAttr_Index< Entity2D >
     virtual void Component_AttrChanged( Entity2D * entity, iv::Attribute * attr ) override;
 };
 

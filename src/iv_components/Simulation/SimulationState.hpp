@@ -6,12 +6,12 @@ namespace comp
 {
 
 /**
-    \ingroup GameState
+    \ingroup Simulation
 */
-class GameState
+class SimulationState
 {
 public:
-    enum class State
+    enum State
     {
         Empty,      ///< No game was run before.
         Running,    ///< Game is actively running.
@@ -21,7 +21,7 @@ public:
     
 public:
 iv::ClientMarker cm;
-                                        GameState( iv::Instance * inst );
+                                        SimulationState( iv::Instance * inst );
     iv::Instance *                      instance();
 
     // write
@@ -39,7 +39,7 @@ iv::ClientMarker cm;
 namespace iv
 {
 template<>
-struct StringIO< comp::GameState::State > : public StringIO_Table< comp::GameState::State >
+struct StringIO< comp::SimulationState::State > : public StringIO_Table< comp::SimulationState::State >
 {
     static const ValuesType Values;
 };
