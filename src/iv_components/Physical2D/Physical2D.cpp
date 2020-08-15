@@ -1,4 +1,4 @@
-#include "PhysicalBody2D.hpp"
+#include "Physical2D.hpp"
 
 namespace comp
 {

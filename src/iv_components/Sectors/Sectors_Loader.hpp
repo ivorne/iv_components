@@ -7,6 +7,7 @@ namespace comp
 {
 
 /**
+    \ingroup Sectors
 */
 class Sectors_Loader : public iv::FrameUpdateClient
 {

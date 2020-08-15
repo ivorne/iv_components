@@ -6,6 +6,9 @@
 namespace comp
 {
 
+/**
+    \ingroup GameState
+*/
 class GameState_Button : public iv::LumaButton
 {
 public:

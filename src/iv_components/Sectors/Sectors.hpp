@@ -6,6 +6,9 @@
 namespace comp
 {
 
+/**
+    \ingroup Sectors
+*/
 class Sectors
 {
 public:

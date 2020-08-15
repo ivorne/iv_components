@@ -6,6 +6,7 @@ namespace comp
 {
 
 /**
+    \ingroup Ability
     We can add various more attributes to the ability:
         - autocast
         - continuous cast enable / disable

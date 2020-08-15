@@ -5,6 +5,9 @@
 namespace comp
 {
 
+/**
+    \ingroup GameState
+*/
 class GameState
 {
 public:

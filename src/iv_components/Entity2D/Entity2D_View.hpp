@@ -7,6 +7,7 @@ namespace comp
 {
 
 /**
+    \ingroup Entity2D
     Not yet implemented.
 */
 class Entity2D_View : public iv::SlotChild

@@ -5,6 +5,9 @@
 namespace comp
 {
 
+/**
+    \ingroup Misc
+*/
 class AutorechargeBehavior : private iv::FixedUpdateClient
 {
 public:

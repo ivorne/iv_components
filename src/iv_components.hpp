@@ -13,8 +13,8 @@
 #include "iv_components/Entity2D/Entity2D_View.hpp"
 #include "iv_components/Entity2D/Entity2D_SimpleView.hpp"
 
-#include "iv_components/Physics2D/PhysicalBody2D.hpp"
-#include "iv_components/Physics2D/PhysicalBody2D_Updater.hpp"
+#include "iv_components/Physical2D/Physical2D.hpp"
+#include "iv_components/Physical2D/Physical2D_Updater.hpp"
 
 #include "iv_components/Sectors/Sectors.hpp"
 #include "iv_components/Sectors/Sectors_Loader.hpp"

@@ -6,11 +6,17 @@
 namespace comp
 {
 
+/**
+    \ingroup Ability
+*/
 struct AbilityInfo
 {
     iv::ResourcePath overlay;
 };
 
+/**
+    \ingroup Ability
+*/
 class Ability_View : public iv::LumaButton
 {
 public:

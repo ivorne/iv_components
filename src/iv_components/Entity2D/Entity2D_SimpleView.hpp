@@ -7,6 +7,9 @@
 namespace comp
 {
 
+/**
+    \ingroup Entity2D
+*/
 class Entity2D_SimpleView_Item : public iv::Transform
 {
 public:
@@ -18,6 +21,9 @@ private:
     iv::Image img;
 };
 
+/**
+    \ingroup Entity2D
+*/
 class Entity2D_SimpleView : public iv::Slot, public iv::FrameUpdateClient, public Entity2D_Listener
 {
 public:

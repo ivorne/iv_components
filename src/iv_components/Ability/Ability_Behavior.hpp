@@ -7,6 +7,7 @@ namespace comp
 {
 
 /**
+    \ingroup Ability
     Allows implementors to make the ability either enabled or disabled, depending on outside conditions.
     Method AbilityActivated is called when activation of the ability is requested by the user.
 */

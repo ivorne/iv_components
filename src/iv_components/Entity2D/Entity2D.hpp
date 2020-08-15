@@ -14,6 +14,7 @@ class Entity2D_World;
 
 //------------- Entity2D_TypeId -------------------------------------------------
 /**
+    \ingroup Entity2D
 */
 class Entity2D_TypeId final : public iv::RuntimeId< Entity2D_TypeId >
 {
@@ -25,6 +26,7 @@ public:
 
 //------------- Entity2D -------------------------------------------------
 /**
+    \ingroup Entity2D
 */
 class Entity2D
 {
@@ -53,6 +55,7 @@ private:
 
 //------------- Entity2D_Listener -------------------------------------------------
 /**
+    \ingroup Entity2D
     Do not forget to call this->Entity2D_Listener::Initialize(), it will call Entity2D_Registered for all existing entities.
 */
 class Entity2D_Listener : public GenericListener< Entity2D_Listener >
@@ -73,6 +76,7 @@ private:
 
 //------------- Entity2D_World -------------------------------------------------
 /**
+    \ingroup Entity2D
 */
 class Entity2D_World : public World< Entity2D >, public GenericListener_Index< Entity2D_Listener >, public ComponentAttr_Index< Entity2D >
 {

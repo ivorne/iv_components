@@ -10,6 +10,7 @@ namespace comp
 class Physical2D_World;
 
 /**
+    \ingroup Physical2D
     Whole PhysicalBody2D module was not yet tested.
 */
 class Physical2D
@@ -40,6 +41,7 @@ private:
 };
 
 /**
+    \ingroup Physical2D
     Do not forget to call this->comp::Physical2D_Listener::Initialize(), it will suppress warning about missing initialization (but it does nothing else in this case :-) ).
 */
 class Physical2D_Listener : public GenericListener< Physical2D_Listener >
@@ -54,6 +56,7 @@ iv::ClientMarker cm;
 };
 
 /**
+    \ingroup Physical2D
 */
 class Physical2D_World : public World< Physical2D >, public GenericListener_Index< Physical2D_Listener >, protected playrho::d2::ContactListener
 {
