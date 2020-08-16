@@ -21,8 +21,4 @@
 
 #include "iv_components/Misc/AutorechargeBehavior.hpp"
 
-#include "iv_components/Link.hpp"
-#include "iv_components/ComponentAttr.hpp"
-#include "iv_components/GenericListener.hpp"
-#include "iv_components/World.hpp"
 #include "iv_components/Defs.hpp"
