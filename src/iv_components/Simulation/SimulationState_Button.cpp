@@ -6,10 +6,10 @@ using namespace iv;
 namespace comp
 {
 
-SimulationState_Button::SimulationState_Button( iv::Instance * inst, SimulationState * state, LumaStyleId style_id ) :
+SimulationState_Button::SimulationState_Button( iv::Instance * inst, SimulationState * sim, LumaStyleId style_id ) :
     LumaButton( inst, style_id ),
     cm( inst, this, "SimulationState_Button" ),
-    state( state ),
+    sim( sim ),
     heap( inst, &this->cm ),
     anim( inst ),
     previous_state( SimulationState::Empty )
@@ -25,15 +25,15 @@ SimulationState_Button::SimulationState_Button( iv::Instance * inst, SimulationS
     auto activation =
             this->heap.create< iv::FunctorActivatorAttribute >(
             &this->cm,
-            [ this, state ]()
+            [ this, sim ]()
             {
-                SimulationState::State st = state->game_state.Get();
+                SimulationState::State st = sim->state.Get();
                 if( st == SimulationState::Paused )
-                    state->pause.Modify( &this->cm, false );
+                    sim->pause.Modify( &this->cm, false );
                 else if( st == SimulationState::Running )
-                    state->pause.Modify( &this->cm, true );
+                    sim->pause.Modify( &this->cm, true );
                 else
-                    state->restart.Modify( &this->cm, state->restart.Get().MakeActivated() );
+                    sim->restart.Modify( &this->cm, sim->restart.Get().MakeActivated() );
             }
         );
     
@@ -59,7 +59,7 @@ SimulationState_Button::SimulationState_Button( iv::Instance * inst, SimulationS
     
     //---------------------------- animation -----------------------------------------------
     // in
-    AnimNode< SimulationState::State > * in_state = this->anim.Attribute_SourceNode( &state->game_state, SimulationState::Empty )
+    AnimNode< SimulationState::State > * in_state = this->anim.Attribute_SourceNode( &sim->state, SimulationState::Empty )
                                                         ->label( "in_game_state" );
     
     // lambda connector

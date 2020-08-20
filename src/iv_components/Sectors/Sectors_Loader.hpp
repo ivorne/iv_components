@@ -8,17 +8,20 @@ namespace comp
 
 /**
     \ingroup Sectors
+    \brief Keeps sectors in range loaded. Needs to be updated from a simulaiton (Sectors_Loader::update).
 */
-class Sectors_Loader : public iv::FrameUpdateClient
+class Sectors_Loader
 {
 public:
-using iv::FrameUpdateClient::instance;
 iv::ClientMarker cm;
 
                                             Sectors_Loader( iv::Instance * inst, Sectors * sectors, iv::Attr< iv::float2 > * position, float load_range, int sector_size );
+    iv::Instance *                          instance();
     
-protected:
-    virtual void                            frame_update() override final;
+    /**
+        Polls current position, unloads out of reach sectors and loads sectors that are now in reach.
+    */
+    void                                    update();
     
 private:
     void                                    Load( iv::int2 block );

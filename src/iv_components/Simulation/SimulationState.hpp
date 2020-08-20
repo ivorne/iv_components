@@ -30,7 +30,10 @@ iv::ClientMarker cm;
     iv::SharedAttr< bool >              pause;
     
     // read
-    iv::SharedAttr< State >             game_state;
+    iv::SharedAttr< State >             state;
+    
+    //
+    iv::SharedAttr< long >              time_ms;
 };
 
 }

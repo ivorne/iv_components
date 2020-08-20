@@ -7,7 +7,6 @@ namespace comp
 {
 
 Sectors_Loader::Sectors_Loader( iv::Instance * inst, Sectors * sectors, iv::Attr< iv::float2 > * position, float load_range, int sector_size ) :
-    iv::FrameUpdateClient( inst ),
     cm( inst, this, "Sectors_Loader" ),
     sectors( sectors ),
     position( position ),
@@ -16,7 +15,11 @@ Sectors_Loader::Sectors_Loader( iv::Instance * inst, Sectors * sectors, iv::Attr
     current_begin( 0, 0 ),
     current_end( 0, 0 )
 {
-    this->cm.inherits( this->iv::FrameUpdateClient::cm );
+}
+
+iv::Instance * Sectors_Loader::instance()
+{
+    return this->cm.instance();
 }
 
 void Sectors_Loader::Load( iv::int2 block )
@@ -31,7 +34,7 @@ void Sectors_Loader::Unload( iv::int2 block )
     this->sectors->Unload( &this->cm, block );
 }
 
-void Sectors_Loader::frame_update()
+void Sectors_Loader::update()
 {
     //--------------------- compute block ranges --------------------------------
     auto center_position = this->position->Get();

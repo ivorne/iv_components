@@ -20,7 +20,8 @@ SimulationState::SimulationState( iv::Instance * inst ) :
     restart( &this->cm ),
     end( &this->cm ),
     pause( &this->cm ),
-    game_state( &this->cm, State::Empty )
+    state( &this->cm, SimulationState::Empty ),
+    time_ms( &this->cm, 0 )
 {
 }
 
