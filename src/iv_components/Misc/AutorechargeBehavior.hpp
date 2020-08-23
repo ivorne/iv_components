@@ -8,15 +8,15 @@ namespace comp
 /**
     \ingroup Misc
 */
-class AutorechargeBehavior : private iv::FixedUpdateClient
+class AutorechargeBehavior
 {
 public:
 iv::ClientMarker cm;
     
                             AutorechargeBehavior( iv::Instance * inst, iv::TimeId time, iv::Attr< int > * m_charges, uint64_t recharge_ms, int max );
     
-    // iv::FixedUpdateClient
-    virtual void            fixed_update( iv::TimeId time, int time_step, int steps ) override final;
+    void                    reset();
+    void                    step( int step_ms );
     
 private:
     iv::Attr< int > *       m_charges;

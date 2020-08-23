@@ -44,4 +44,5 @@ file( DOWNLOAD "https://ivorne.github.io/ivorium/ivorium.tag" "${CMAKE_CURRENT_B
 set( DOXYBOOT_HTML_HEADER "doxyboot/header.html" )
 set( DOXYBOOT_HTML_FOOTER "doxyboot/footer.html" )
 set( DOXYGEN_TAGFILES "${CMAKE_CURRENT_BINARY_DIR}/ivorium.tag=https://ivorne.github.io/ivorium/" )
+set( DOXYGEN_WARN_IF_UNDOCUMENTED "NO" )
 doxyboot_add_docs( iv_components_doc iv_components "src" )
